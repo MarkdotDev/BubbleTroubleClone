@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://pnvrne2kld10"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_tjm00"]
+[ext_resource type="PackedScene" uid="uid://cjtdesgsaofb0" path="res://player.tscn" id="2_36yu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63cn4"]
+size = Vector2(1152, 21)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tjm00")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.529412, 0.807843, 0.921569, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_36yu0")]
+position = Vector2(526, 613)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_63cn4")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LivesLabel" type="Label" parent="UI"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+text = "Lives: 3"
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 81.0
+offset_bottom = 73.0
+text = "Score: 0"
+
+[node name="GameOverLabel" type="Label" parent="UI"]
+layout_mode = 1
+offset_left = 353.0
+offset_top = 209.0
+offset_right = 720.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
